@@ -26,3 +26,23 @@ try{
     return res.status(500).send("서버 오류");
   }
 };
+
+//3. 멤버별 개인 출석 API
+exports.postAttendance = async function (req, res) {
+
+    /**
+     * Body: groupId,userId,attendtimestamp,date
+     */
+    const {groupId,userId,attendtimestamp,date} = req.body;
+
+
+    const attendResponse = await Member.createAttendance(
+        groupId,
+        userId,
+        attendtimestamp,
+        date
+    );
+
+    res.render("index",{attendResponse});
+};
+
