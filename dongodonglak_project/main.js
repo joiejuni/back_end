@@ -1,6 +1,5 @@
- const port = 80,
-
-
+ const port = 80;
+ 
  const  express = require("express"),
     app = express(),
     layouts = requrie("express-ejs-layouts");

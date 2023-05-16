@@ -7,7 +7,7 @@ exports.getAttendance = async (req,res) => {
     const {groupId,date} = req.params;
 try{
     const attendanceBydate = await Member.showAttendance(groupId,date);
-    res.render("index",{groupId:groupId,date:date,result:attendanceBydate});
+    res.render("index",{attendanceBydate});
 } catch (error) {
     console.error(error);
     return res.status(500).send("서버 오류");
@@ -15,12 +15,12 @@ try{
 };
 
 //2. 멤버 이름별 출석 상태 조회 
-exports.getAttendance = async (req,res) => {
+exports.getAttendancebyName = async (req,res) => {
 
     const {groupId,date,membername} = req.params;
 try{
     const attendanceByname = await Member.memberAttendance(groupId,date,membername);
-    res.render("index",{groupId:groupId,date:date,membername:membername,result:attendanceByname});
+    res.render("index",{attendanceByname});
 } catch (error) {
     console.error(error);
     return res.status(500).send("서버 오류");
@@ -46,3 +46,46 @@ exports.postAttendance = async function (req, res) {
     res.render("index",{attendResponse});
 };
 
+//4. 날짜별 출석 상태 조회
+exports.getAttendanceType = async (req,res) => {
+
+    const {groupId,date} = req.params;
+
+try{
+    const attendTypeBydate = await Member.showAttendanceType(groupId,date);
+    res.render("index",{attendTypeBydate});
+} catch (error) {
+    console.error(error);
+    return res.status(500).send("서버 오류");
+  }
+};
+
+//5. 날짜별 결석 사용자 조회
+
+exports.getAbsense = async (req,res) => {
+
+    const {groupId,date} = req.params;
+
+try{
+    const AbsenseResult = await Member.showAbsense(groupId,date);
+    res.render("index",{AbsenseResult});
+} catch (error) {
+    console.error(error);
+    return res.status(500).send("서버 오류");
+  }
+};
+
+//6. 날짜별 지각 사용자 조회
+
+exports.getLate = async (req,res) => {
+
+    const {groupId,date} = req.params;
+
+try{
+    const lateResult = await Member.showLate(groupId,date);
+    res.render("index",{lateResult});
+} catch (error) {
+    console.error(error);
+    return res.status(500).send("서버 오류");
+  }
+};
