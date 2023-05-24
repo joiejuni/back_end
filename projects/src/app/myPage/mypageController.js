@@ -9,7 +9,7 @@ const {emit} = require("nodemon");
 /**
  * API No. 1
  * API Name : 유저 닉네임 조회 API
- * [GET] /app/members/:groupId/attendance/:date
+ * [GET] /app/:groupId/:userId/me/name
  */
 exports.getName = async function (req, res) {
 
@@ -20,7 +20,7 @@ exports.getName = async function (req, res) {
     const userId = req.params.userId;
 
     const nameListByUser = await nameProvider.nameUserList(groupId, userId);
-   // return res.send(response(baseResponse.SUCCESS, attendListByDate));
+    
     return res.render("../views/myPage/mypage.ejs", {result:nameListByUser});
 
 };
