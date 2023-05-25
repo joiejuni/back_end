@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동고동락</title>
+    <!-- reset-css -->
+    
+    <!-- main.css -->
+    <link rel="stylesheet" href="../css/mypage.css">
+    <!-- main.js -->
+    <!-- <script defer src="../js/main.js"></script> -->
+    <!-- google material-icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <script src="../js/includeHTML.js"></script>
+  </head>
+  
+  <body>
+    <nav include-html="/html/sidebar.html"></nav>
+    <script>
+      includeHTML();
+    </script>
+    <!-- 메인 -->
+    <div class="content myPage">
+      <div class="container">
+        <div class="pageName">My Page</div>
+        </div>
+      <div class="contentSpace">
+        <!-- Profile Info Box -->
+        <span class="contentBox">
+          <span class="profileImg">
+            <img src="../img/profile_img.jpg" alt="프로필사진">
+          </span>
+          <span class="userName">Jaeae</span>
+          <span class="userNum">20211149</span>
+          <span class="editBtn">편집</span>
+          <span class="divideLine"></span>
+          <ul class="cnt1">
+            <li class="cntPost">6</li>
+            <li class="cntComment">17</li>
+            <li class="cntLike">24</li>
+            <li class="cntScrap">4</li>
+          </ul>
+          <ul class="cnt2">
+            <li class="cntPost">게시글</li>
+            <li class="cntComment">댓글</li>
+            <li class="cntLike">좋아요</li>
+            <li class="cntScrap">스크랩</li>
+          </ul>
+        </span>
+        <!-- To-Do List Box -->
+        <span class="contentBox" >
+          <div class="title">To-Do</div>
+          <span class="divideLine2"></span>
+          <div class="box-wrapper">
+            <div class="todoBox">
+              <span class="dday">D-2</span>
+              <span class="todoInfo">[알고리즘] - Problem Set 4</span>
+            </div>
+            <div class="todoBox colorBox">
+              <span class="dday">D-5</span>
+              <span class="todoInfo">IT이슈 발표 자료 제출</span>
+            </div>
+            <div class="todoBox">
+              <span class="dday">D-10</span>
+              <span class="todoInfo">[투표] 티셔츠 공동 구매</span>
+            </div>
+            <div class="todoBox colorBox" style="border-bottom: 2px solid #D9D9D9;">
+              <span class="dday">D-14</span>
+              <span class="todoInfo">졸업생 강연 수요 조사</span>
+            </div>
+          </div>
+          <span class="pagingBtn" style="background-color: #C9BCFF;"></span>
+          <span class="pagingBtn btn2"></span>
+        </span>
+        <!-- 상벌점 현황!!!!!!!!!!!!! -->
+        <span class="contentBox reward" style="display: none;">
+          <div class="title">상벌점</div>
+          <span class="divideLine2"></span>
+          <span class="rewardBox-wrapper">
+            <span class="rewardBox">4</span>
+            <span class="rewardBox">0</span>
+            <span class="rewardBox" style="border: 3px solid #C9BCFF;">4</span>
+          </span>
+          <span class="rewardInfo-wrapper">
+            <span class="rewardInfo">상점</span>
+            <span class="rewardInfo">벌점</span>
+            <span class="rewardInfo">합계</span>
+          </span>
+          <span class="pagingBtn" style="background-color: #C9BCFF;"></span>
+          <span class="pagingBtn btn2"></span>
+        </span>
+      </div>
+      <!-- 출결현황 -->
+      <div class="contentSpace2">
+        <div class="attendText">출결현황</div>
+        <span class="contentBox2">
+          <span class="calender">
+            <div class="month">
+              <span class="material-icons calenderArrow left">
+                navigate_before
+                </span>
+              <div class="monthInfo">5월</div>
+              <span class="material-icons calenderArrow right">
+                keyboard_arrow_right
+                </span>
+            </div>
+            <!-- 캘린더 -->
+            <table>
+              <thead>
+                <tr>
+                  <th>일</th>
+                  <th>월</th>
+                  <th>화</th>
+                  <th>수</th>
+                  <th>목</th>
+                  <th>금</th>
+                  <th>토</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td class="today">18</td>
+                  <td>19</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td>22</td>
+                  <td>23</td>
+                  <td>24</td>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>27</td>
+                </tr>
+                <tr>
+                  <td>28</td>
+                  <td>29</td>
+                  <td>30</td>
+                  <td>31</td>
+                </tr>
+              </tbody>
+            </table>
+          </span>
+          <span class="detail">상세정보</span>
+          <span class="attBox-wrapper">
+            <span class="attendanceBox">
+              <span class="date">2023.05.02</span>
+              <span class="time">14:35:71</span>
+              <span class="attendance">출석</span>
+            </span>
+            <span class="attendanceBox">
+              <span class="date">2023.05.06</span>
+              <span class="time">14:32:64</span>
+              <span class="attendance">출석</span>
+            </span>
+            <span class="attendanceBox">
+              <span class="date">2023.05.09</span>
+              <span class="time">14:42:47</span>
+              <span class="attendance" style="color: #D46A6D;">지각</span>
+            </span>
+            <span class="attendanceBox">
+              <span class="month">5월</span>
+              <span class="attContainer">
+                <span class="attInfo1">출석</span>
+                <span class="attCnt">02건</span>
+                <span class="divideSlash">/</span>
+                <span class="attInfo2">지각</span>
+                <span class="attCnt">01건</span>
+                <span class="divideSlash">/</span>
+                <span class="attInfo3">결석</span>
+                <span class="attCnt">00건</span>
+              </span>
+              
+            </span>
+          </span>
+        </span>
+      </div>
+
+        <div class="components">
+          
+        </div>
+      </div>  
+    </body>
+</html>

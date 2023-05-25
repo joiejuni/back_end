@@ -20,8 +20,8 @@ exports.getAttendance = async function (req, res) {
     const date = req.params.date;
 
     const attendListByDate = await attendProvider.attendUserList(groupId,date);
-   // return res.send(response(baseResponse.SUCCESS, attendListByDate));
-    return res.render("../views/attendance/attedn.ejs",{result:attendListByDate});
+   return res.send(response(baseResponse.SUCCESS, attendListByDate));
+    // return res.render("../views/attendance/attedn.ejs",{result:attendListByDate});
 
 };
 

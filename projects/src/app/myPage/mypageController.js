@@ -19,8 +19,9 @@ exports.getName = async function (req, res) {
     const groupId = req.params.groupId;
     const userId = req.params.userId;
 
-    const nameListByUser = await nameProvider.nameUserList(groupId, userId);
+    const nameListByUser = await mypageProvider.nameUserList(groupId, userId);
     
-    return res.render("../views/myPage/mypage.ejs", {result:nameListByUser});
+    return res.send(response(baseResponse.SUCCESS, nameListByUser));
+    // return res.render("../views/myPage/mypage.ejs", {result:nameListByUser});
 
 };

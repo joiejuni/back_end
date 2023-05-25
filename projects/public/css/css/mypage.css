@@ -1,0 +1,487 @@
+/* common */
+ul, li {
+    list-style: none;
+  }
+  
+  
+  /* main */
+  .content {
+    height: 100%;
+    left: 350px;
+    background-color: #F6F7FB;
+    position: absolute;
+    right: 320px;
+  }
+  .content {
+    box-sizing: border-box;
+  }
+  
+  .content .container {
+    display: flex;
+    margin: 50px 60px 0 160px;
+    height: 90px;
+    width: 100%;
+  }
+  
+  .content .pageName {
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  
+  .search {
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: 760px;
+    height: 50px;
+    left: 15%;
+  }
+  
+  .search input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bbb;
+    color: #8b8b8b;
+    background-color: #f0f0f0;
+    font-size: 25px;
+    border-radius: 20px;
+  }
+  
+  .search .searchIcon {
+    position: absolute;
+    right: 20px;
+    font-size: 36px;
+    color: #8b8b8b;
+    cursor: pointer;
+  }
+  
+  /* main contents */
+  .content .contentSpace {
+    display: flex;
+    flex-direction: row;
+    margin: 0 160px 0 160px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .content .contentSpace .contentBox {
+    width: 480px;
+    height: 260px;
+    background-color: white;
+    display: flex;
+    list-style: none;
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .content .contentSpace .contentBox .profileImg {
+    position: relative;
+    left: 50px;
+    top: 25px;
+  }
+  
+  .content .contentSpace .contentBox .profileImg img {
+    width: 70px;
+  }
+  
+  .content .contentSpace .contentBox .userName {
+    position: absolute;
+    top: 28px;
+    left: 146px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .content .contentSpace .contentBox .userNum {
+    position: absolute;
+    left: 145px;
+    top: 65px;
+    font-size: 16px;
+    color: #8b8b8b;
+  }
+  
+  .content .contentSpace .contentBox .editBtn {
+    position: absolute;
+    width: 80px;
+    height: 50px;
+    background-color: #B1B2FF;
+    right: 10%;
+    top: 12%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .content .contentSpace .contentBox .divideLine {
+    position: absolute;
+    width: 440px;
+    height: 0px;
+    left: 20px;
+    top: 45%;
+    border: 1px solid #D9D9D9;
+    transform: rotate(0.17deg);
+  }
+  
+  .content .contentSpace .contentBox .cnt1 {
+    display: flex;
+    position: absolute;
+    width: 60%;
+    height: 50px;
+    /* background-color: red; */
+    align-items: center;
+    justify-content: space-between;
+    top: 50%;
+    left: 10%;
+  }
+  
+  .content .contentSpace .contentBox .cnt1, .cnt2 li {
+    cursor: pointer;
+  }
+  
+  .content .contentSpace .contentBox .cnt1 li {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .content .contentSpace .contentBox .cnt2 {
+    display: flex;
+    position: absolute;
+    width: 65%;
+    height: 50px;
+    /* background-color: red; */
+    align-items: center;
+    justify-content: space-between;
+    top: 65%;
+    left: 7%;
+  }
+  
+  .content .contentSpace .contentBox .cnt2 li {
+    font-size: 16px;
+    color: #8b8b8b;
+  }
+  
+  .content .contentSpace .contentBox .cnt2 .cntComment {
+    left: 135px;
+    position: absolute;
+  }
+  
+  .content .contentSpace .contentBox .cnt2 .cntLike {
+    left: 225px;
+    position: absolute;
+  }
+  
+  .content .contentSpace2 {
+    margin: 50px 110px 0 160px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .content .contentSpace2 .attendText {
+    font-size: 18px;
+    font-weight: 600;
+    color: #535353;
+  }
+  
+  /* To-Do */
+  .content .contentSpace2 .contentBox2 {
+    top: 30px;
+    width: 1065px;
+    height: 380px;
+    background-color: white;
+    display: flex;
+    list-style: none;
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .content .contentSpace .contentBox .title {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #535353;
+    left: 5%;
+    top: 5%;
+  }
+  
+  .content .contentSpace .contentBox .divideLine2 {
+    position: absolute;
+    width: 440px;
+    height: 0px;
+    left: 20px;
+    top: 18%;
+    border: 1px solid #D9D9D9;
+    transform: rotate(0.17deg);
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper {
+    position: absolute;
+    width: 360px;
+    height: 180px;
+    box-sizing: border-box;
+    /* border: 2px solid #D9D9D9; */
+    left: 60px;
+    top: 64px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper .todoBox {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    border: 2px solid #D9D9D9;
+    line-height: 45px;
+    position: relative;
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper .todoBox:not(:last-child) {
+    border-bottom: none;
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper .colorBox {
+    background-color: #F4F5FF;
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper .todoBox .dday {
+    position: absolute;
+    left: 7%;
+    top: 7.5px;
+    width: 50px;
+    height: 30px;
+    background-color: #C9BCFF;
+    line-height: 30px;
+    text-align: center;
+    color: #ffff;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper .todoBox .todoInfo {
+    position: absolute;
+    left: 25%;
+    top: 7.5px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    color: #8D8D8F;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .content .contentSpace .contentBox .box-wrapper .todoBox .todoInfo:hover {
+    text-decoration: underline;
+    color: #535353;
+  }
+  
+  .content .contentSpace .contentBox .pagingBtn {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    right: 25px;
+    top: 50%;
+    cursor: pointer;
+  }
+  
+  .content .contentSpace .contentBox .btn2 {
+    top: 60%;
+    background-color: #D9D9D9;
+  } 
+  
+  .content .reward .rewardBox-wrapper {
+    position: absolute;
+    display: flex;
+    width: 340px;
+    top: 35%;
+    left: 70px;
+    justify-content: space-between;
+  }
+  
+  /* 상벌점 */
+  .content .reward .rewardBox-wrapper .rewardBox {
+    box-sizing: border-box;
+    width: 70px;
+    height: 90px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    line-height: 90px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #535353;
+    border: 2px solid #E7E7E7;
+    cursor: pointer;
+  }
+  
+  .content .reward .rewardInfo-wrapper {
+    position: absolute;
+    display: flex;
+    width: 340px;
+    top: 75%;
+    left: 70px;
+    justify-content: space-between;
+  }
+  
+  .content .reward .rewardInfo-wrapper .rewardInfo {
+    box-sizing: border-box;
+    width: 70px;
+    text-align: center;
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+  }
+  
+  /* CALENDER */
+  .calender {
+    position: relative;
+    left: 150px;
+    top: 30px;
+  }
+  
+  .calender .month {
+    text-align: center;
+  }
+  
+  .calender .monthInfo {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .calender .calenderArrow {
+    color: #6E63B6;
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .calender .left {
+    left: 80px;
+  }
+  
+  .calender .right {
+    right: 80px;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  .calender td {
+    padding: 12px;
+  }
+  
+  .calender th, td {
+    font-size: 18px;
+  }
+  
+  .calender .today {
+    background-color: #B1B2FF;
+    border-radius: 50%;
+    color: #FFFF;
+  }
+  
+  /* 출석현황 */
+  .content .contentSpace2 .contentBox2 .detail {
+    position: absolute;
+    right: 330px;
+    top: 15%;
+    font-size: 18px;
+    color: #555555;
+    font-weight: 600;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    right: 5%;
+    top: 25%;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    border: 2px solid #D9D9D9;
+    line-height: 45px;
+    position: relative;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox:not(:last-child) {
+    border-bottom: none;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox .date {
+    position: absolute;
+    left: 18px;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox .time {
+    position: absolute;
+    left: 150px;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox .attendance {
+    position: absolute;
+    right: 25px;
+    color: #6E63B6;
+    font-weight: 600;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox:last-child {
+    border: 3px solid #C9BCFF;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox .month {
+    position: absolute;
+    left: 43px;
+    font-weight: bold;
+    color: #555555;
+  }
+  
+  .content .contentSpace2 .contentBox2 .attBox-wrapper .attendanceBox .attContainer {
+    position: absolute;
+    height: 30px;
+    left: 28%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .attContainer span {
+    padding-right: 3px;
+    font-weight: bold;
+  }
+  
+  .attContainer .attCnt {
+    color: #555555;
+  }
+  
+  .attContainer .divideSlash {
+    color: #BABABA;
+  }
+  
+  .attContainer .attInfo1 {
+    color: #6E63B6;
+  }
+  
+  .attContainer .attInfo2 {
+    color: #D46A6D;
+  }
+  
+  .attContainer .attInfo3 {
+    color: #8FB643;
+  }

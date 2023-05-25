@@ -1,4 +1,5 @@
 const express = require('express');
+const nunjucks = require('nunjucks')
 const compression = require('compression');
 const methodOverride = require('method-override');
 var cors = require('cors');
@@ -19,6 +20,7 @@ module.exports = function () {
     /* App (Android, iOS) */
     // TODO: 도메인을 추가할 경우 이곳에 Route를 추가하세요.
     require('../src/app/attendance/attendRoute')(app);
+    require('../src/app/myPage/mypageRoute')(app);
     // require('../src/app/Board/boardRoute')(app);
 
     return app;
