@@ -21,7 +21,7 @@ exports.getName = async function (req, res) {
 
     const nameListByUser = await mypageProvider.nameUserList(groupId, userId);
     
-    return res.send(response(baseResponse.SUCCESS, nameListByUser));
-    // return res.render("../views/myPage/mypage.ejs", {result:nameListByUser});
+    // return res.send(response(baseResponse.SUCCESS, nameListByUser[userId]));
+    return res.render("../views/myPage/mypage.ejs", {result:nameListByUser[userId]}); // ejs에서 가져와보자
 
 };

@@ -1,8 +1,9 @@
 module.exports = function(app){
+
     const mypage = require('./mypageController');
 
     // 1. 유저 닉네임 조회 API
-    app.get('/app/:groupId/:userId/me/name', mypage.getName);
+    app.get('/app/:groupId/:userId/me/name', mypage.getName); // getName 라우트 생성
 
 };
 
