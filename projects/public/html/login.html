@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>동고동락</title>
+    <meta charset="utf-8">
+    <link href="../css/login.css" rel="stylesheet">
+    <script src="./js/includeHTML.js"></script>
+
+  </head>
+
+  <body>
+      <!-- <nav include-html="/html/sidebar.html"></nav>
+      <script>
+        includeHTML();
+      </script> -->
+    
+      <div class="header">
+        <img id="logo" src="../img/Logo.png">
+        <p>동고동락</p>
+      </div>
+
+      <div class="login">
+        <form action="/app/login" method="post">
+            <div class="id">
+                <p>아이디</p>
+            <input type="text" name="userId" placeholder="이메일 입력" value="">
+            </div>
+            <div class="password">
+                <p>비밀번호</p>
+                <input type="password" name="password" value="<%= password %>">
+            </div>
+        </form>
+      <div class="button">
+        <button class="btn login" type="submit">로그인</button>
+        <button class="btn signup" onclick="location.href='';">회원가입</button>
+      </div>
+      
+      <div>
+
+      </div>
+  </body>
+</html>
