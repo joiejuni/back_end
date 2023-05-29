@@ -11,7 +11,7 @@
     <!-- mypage.css -->
     <link rel="stylesheet" href="/css/mypage.css">
     <!-- main.js -->
-    <!-- <script defer src="../js/main.js"></script> -->
+    <script defer type="text/javascript" src="/js/mypage.js"></script>
     <!-- google material-icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -62,7 +62,7 @@
       <!-- 프로필 사진, 이름, 멤버 등급 -->
       <div class="profile">
         <div><img id="profile-img" src="/img/profile_img.jpg"></div>
-        <p class="profile-name"><%= result %></p>
+        <p class="profile-name"><%= JSON.stringify(name) %></p>
         <p class="grade">member</p>
       </div>
 
@@ -90,22 +90,23 @@
         <span class="contentBox">
           <span class="profileImg">
             <img src="/img/profile_img.jpg" alt="프로필사진">
+            <!-- 데베에서 프로필 사진 어케 가져오지 -->
           </span>
-          <span class="userName"><%= result %></span>
+          <span id="dataEl" class="userName"><%= JSON.stringify(name) %></span>
           <span class="userNum">20211149</span>
           <span class="editBtn">편집</span>
           <span class="divideLine"></span>
           <ul class="cnt1">
-            <li class="cntPost">6</li>
-            <li class="cntComment">17</li>
-            <li class="cntLike">24</li>
-            <li class="cntScrap">4</li>
+            <li class="cntPost"><%= JSON.stringify(cntPost) %></li>
+            <li class="cntComment"><%= JSON.stringify(cntComment) %></li>
+            <li class="cntLike"><%= JSON.stringify(cntLike) %></li>
+            <!-- <li class="cntScrap">4</li> -->
           </ul>
           <ul class="cnt2">
             <li class="cntPost">게시글</li>
             <li class="cntComment">댓글</li>
             <li class="cntLike">좋아요</li>
-            <li class="cntScrap">스크랩</li>
+            <!-- <li class="cntScrap">스크랩</li> -->
           </ul>
         </span>
         <!-- To-Do List Box -->
@@ -138,8 +139,8 @@
           <div class="title">상벌점</div>
           <span class="divideLine2"></span>
           <span class="rewardBox-wrapper">
-            <span class="rewardBox">4</span>
-            <span class="rewardBox">0</span>
+            <span class="rewardBox"><%= JSON.stringify(rewardPnt) %></span>
+            <span class="rewardBox"><%= JSON.stringify(penaltyPnt) %></span>
             <span class="rewardBox" style="border: 3px solid #C9BCFF;">4</span>
           </span>
           <span class="rewardInfo-wrapper">
