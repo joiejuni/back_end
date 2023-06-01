@@ -23,3 +23,4 @@ exports.getAttendance = async function (req, res) {
     return res.send(response(baseResponse.SUCCESS, attendListByDate));
     //return res.render("../views/attendance/attend.ejs",attendListByDate);
 };
+
