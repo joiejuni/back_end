@@ -42,6 +42,17 @@ async function selectComments(connection) {
   return comments;
 }
 
+// // 6. 유저별 닉네임 수정
+// async function updateName(connection) {
+//   const updateNameQuery = `
+//   SELECT count(*)
+//   FROM Comment, User
+//   WHERE Comment.userId = User.userId;
+//                 `;
+//   const comments = await connection.query(updateNameQuery);
+//   return comments;
+// }
+
 // 8. 유저별 프로필 사진 조회
 async function selectAvatar(connection) {
   const selectAvatarQuery = `

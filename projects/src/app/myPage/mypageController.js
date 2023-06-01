@@ -116,6 +116,24 @@ exports.getComments = async function (req, res) {
     return res.send(response(baseResponse.SUCCESS, commentByUser));
 };
 
+// /**
+//  * API No. 6
+//  * API Posts : 유저별 닉네임 수정 API
+//  * [PUT] /app/:groupId/:userId/me/name
+//  */
+// exports.updateName = async function (req, res) {
+
+//     /**
+//      * path variable : groupId, userId
+//      */
+//     const groupId = req.params.groupId;
+//     const userId = req.params.userId;
+
+//     const commentByUser = await mypageProvider.commentsUser(groupId, userId); // get num of comments
+    
+//     return res.send(response(baseResponse.SUCCESS, commentByUser));
+// };
+
 /**
  * API No. 8
  * API Posts : 유저별 프로필 사진 조회 API

@@ -14,6 +14,15 @@ exports.nameUserList = async function (groupId, userId) {
     return nameListResult;
 };
 
+// 존재하는 유저인지 체크(닉네임 확인)
+exports.userCheck = async function(groupId, userId) {
+    const connection = await pool.getConnection(async (conn) => conn);
+    const userCheckResult = await mypageDao.selectName(connection, groupId, userId);
+    connection.release();
+  
+    return userCheckResult;
+};
+
 // 2. 유저별 게시글 수 조회
 exports.postsUser = async function (groupId, userId) {
     const connection = await pool.getConnection(async (conn) => conn);
