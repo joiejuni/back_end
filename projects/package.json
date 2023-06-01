@@ -1,7 +1,7 @@
 {
-  "name": "projects",
+  "name": "api-server-node",
   "version": "1.0.0",
-  "description": "본 템플릿은 소프트스퀘어드 서버 교육용 Node.js 템플릿 입니다. (2021 ver.)",
+  "description": "Node.js API Server",
   "main": "index.js",
   "dependencies": {
     "abbrev": "^1.1.1",
@@ -186,7 +186,13 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development node index.js",
+    "prod": "NODE_ENV=production node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:softsquared/template/api-server-node.git"
   },
   "author": "",
   "license": "ISC"
