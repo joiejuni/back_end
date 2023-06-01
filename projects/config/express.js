@@ -30,6 +30,7 @@ module.exports = function () {
     require('../src/app/attendance/attendRoute')(app);
     require('../src/app/assignment/assignRoute')(app);
     require('../src/app/group/groupRoute')(app);
+    require('../src/app/users/userRoute')(app);
     // require('../src/app/Board/boardRoute')(app);
 
     app.get('/', (req, res) => {

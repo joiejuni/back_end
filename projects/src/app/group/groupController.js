@@ -17,7 +17,7 @@ const { v4: uuidv4 } = require('uuid');
         const userId = getUserId.getUserId;
         userId = req.body.userId;
         const link = req.body.link;
-        const groupId = link.split("/")[1];
+        const groupId = link.split("/")[2];
         const groupResponse = await groupService.postGroups(userId,groupId);
 
         return res.send(groupResponse);
