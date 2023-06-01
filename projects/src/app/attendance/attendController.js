@@ -17,11 +17,14 @@ exports.getAttendance = async function (req, res) {
      * path variable : groupId, date
      */
     const groupId = req.params.groupId;
-    const date = req.params.date;
+    const scheduleId = req.params.scheduleId;
 
+    const attendListByDate = await attendProvider.attendUserList(groupId,scheduleId);
+    return res.send(response(baseResponse.SUCCESS, attendListByDate));
+    //return res.render("../views/attendance/attend.ejs",attendListByDate);
     const attendListByDate = await attendProvider.attendUserList(groupId,date);
    return res.send(response(baseResponse.SUCCESS, attendListByDate));
-    // return res.render("../views/attendance/attedn.ejs",{result:attendListByDate});
+    // return res.render("../views/attendance/attend.ejs",{result:attendListByDate});
 
 };
 
