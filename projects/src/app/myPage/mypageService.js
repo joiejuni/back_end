@@ -1,7 +1,6 @@
 // Service: Update, Patch 비즈니스 로직 처리
 const {logger} = require("../../../config/winston");
 const {pool} = require("../../../config/database");
-const groupDao = require("./groupDao");
 const baseResponse = require("../../../config/baseResponseStatus");
 const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
