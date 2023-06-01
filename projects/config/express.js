@@ -1,6 +1,8 @@
 const express = require('express');
+const nunjucks = require('nunjucks')
 const compression = require('compression');
 const methodOverride = require('method-override');
+const path = require('path');
 var cors = require('cors');
 const sessionMiddleware = require('./sessionMiddleware');
 const bodyParser = require('body-parser');
@@ -14,7 +16,7 @@ module.exports = function () {
 
     app.use(express.json());
 
-    app.use(express.urlencoded({extended: true}));
+    app.use(express.urlencoded({extended: false}));
 
     app.use(methodOverride());
 
