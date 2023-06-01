@@ -12,22 +12,21 @@
       <!-- <nav include-html="/html/sidebar.html"></nav>
       <script>
         includeHTML();
-      </script> -->
-    
+      </script> --> 
       <div class="header">
         <img id="logo" src="../img/Logo.png">
         <p>동고동락</p>
       </div>
-
       <div class="login">
+        <%- include('../../views/login/login.ejs') %>
         <form action="/app/login" method="post">
             <div class="id">
                 <p>아이디</p>
-            <input type="text" name="userId" placeholder="이메일 입력" value="">
+            <input type="text" name="userId" placeholder="이메일 입력">
             </div>
             <div class="password">
                 <p>비밀번호</p>
-                <input type="password" name="password" value="<%= password %>">
+                <input type="password" name="password">
             </div>
         </form>
       <div class="button">
