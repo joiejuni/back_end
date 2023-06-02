@@ -5,10 +5,10 @@ const MySQLStore = require('express-mysql-session')(session);
 require('dotenv').config();
 
 const options = {
-    host: '127.0.0.1',
+    host: '34.22.77.203',
     user: 'root',
     port: '3306',
-    password: 'Jiwon0176!@#',
+    password: 'dongdong9',
     database: 'DGDL'
 }
 
