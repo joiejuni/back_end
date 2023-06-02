@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>동고동락</title>
+    <meta charset="utf-8">
+    <link href="/public/css/signup.css" rel="stylesheet">
+    <!-- <script type="text/javascript" src="./js/main.js" defer></script> -->
+    <!-- <script src="./js/includeHTML.js"></script> -->
+
+  </head>
+
+  <body>
+    <!-- <nav include-html="/html/sidebar.html"></nav>
+    <script>
+      includeHTML();
+    </script> -->
+    <form action="http://localhost:3000/app/users/signup" method="POST">
+      <div class="header">
+        <img id="logo" src="/public/Images/Logo.png">
+        <p>회원가입</p>
+      </div>
+
+      <div class="sign-up">
+      
+        <div class="id">
+            <p>아이디</p>
+            <input type="text" name="userId" placeholder="아이디를 입력하세요">
+        </div>
+
+        <div class="name">
+            <p>이름</p>
+            <input type="text" name="userName" placeholder="이름을 입력하세요">
+        </div>
+
+        <div class="email">
+            <p>이메일</p>
+            <input type="email" name="email" placeholder="email@example.com">
+        </div>
+
+        <div class="password">
+            <p>비밀번호</p>
+            <input type="password" name="password" placeholder="비밀번호를 입력하세요">
+        </div>
+
+        <div class="checkpw">
+            <p>비밀번호 확인</p>
+            <input type="password" name="checkpw" placeholder="비밀번호를 다시 입력해주세요">
+        </div>
+        
+      </div>
+
+      <class="btn sign-up">[가입하기]</div>
+
+    </form>
+    
+
+  </body>
+</html>

@@ -1,12 +1,9 @@
 const express = require('express');
-const nunjucks = require('nunjucks')
 const compression = require('compression');
 const methodOverride = require('method-override');
-const path = require('path');
 var cors = require('cors');
-const sessionMiddleware = require('./sessionMiddleware');
-const bodyParser = require('body-parser');
-const ejs = require("ejs");
+const path = require('path');
+const { pool } = require('./database');
 
 
 module.exports = function () {
@@ -16,7 +13,7 @@ module.exports = function () {
 
     app.use(express.json());
 
-    app.use(express.urlencoded({extended: false}));
+    app.use(express.urlencoded({extended: true}));
 
     app.use(methodOverride());
 
@@ -34,9 +31,13 @@ module.exports = function () {
     require('../src/app/myPage/mypageRoute')(app);
     // require('../src/app/Board/boardRoute')(app);
 
-    app.get('/', (req, res) => {
-      // EJS 파일 렌더링
-      res.render('../views/login/login.ejs');
-    });
+    app.use(express.static(path.join(parentDirectory, 'public')));
+
+    /* App (Android, iOS) */
+    // TODO: 도메인을 추가할 경우 이곳에 Route를 추가하세요.
+    require('../src/app/Attendance/attendRoute')(app);
+    require('../src/app/Notice/noticeRoute')(app);
+
     return app;
 };
+

@@ -1,8 +1,8 @@
 const {logger} = require("../../../config/winston");
 const {pool} = require("../../../config/database");
 const secret_config = require("../../../config/secret");
-const groupProvider = require("./groupProvider");
-const groupDao = require("./groupDao");
+const userProvider = require("./userProvider");
+const userDao = require("./userDao");
 const baseResponse = require("../../../config/baseResponseStatus");
 const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
@@ -13,8 +13,13 @@ const {connect} = require("http2");
 
 // Service: Create, Update, Delete 비즈니스 로직 처리
 
-exports.createUser = async function (email, password, nickname) {
+exports.createUser = async function (userId, userName, email, password) {
     try {
+        // 아이디 중복 확인
+        const userIdRows = await userProvider.userIdCheck(userId);
+        if (userIdRows.lengt > 0)
+            return errResponse(baseResponse.SIGNUP_REDUNDANT_USERID);
+
         // 이메일 중복 확인
         const emailRows = await userProvider.emailCheck(email);
         if (emailRows.length > 0)
@@ -26,7 +31,7 @@ exports.createUser = async function (email, password, nickname) {
             .update(password)
             .digest("hex");
 
-        const insertUserInfoParams = [email, hashedPassword, nickname];
+        const insertUserInfoParams = [userId, userName, email, password];
 
         const connection = await pool.getConnection(async (conn) => conn);
 
@@ -41,30 +46,3 @@ exports.createUser = async function (email, password, nickname) {
         return errResponse(baseResponse.DB_ERROR);
     }
 };
-
-exports.confirmLeader = async function (userId,groupId) {
-    try {
-        const connection = await pool.getConnection(async (conn) => conn);
-        const isgroupResult = await groupDao.selectGroupLeader(connection,userId,groupId);
-        connection.release();
-        return response(isgroupResult);
-
-    } catch (err) {
-        logger.error(`App - editUser Service error\n: ${err.message}`);
-        return errResponse(baseResponse.DB_ERROR);
-    }
-}
-
-exports.postGroups = async function (userId,groupId,groupCode) {
-    try{
-        const connection = await pool.getConnection(async (conn) => conn);
-        const checkGroupResult = await groupProvider.checkGroupId(connection,userId,groupId);
-        if(checkGroupResult) return errResponse(baseResponse.GROUP_EXIST_MEMBER);
-        const checkGroupCode = await groupDao.selectGroupCode(connection,groupCode);
-        return checkGroupCode;
-
-    } catch (err) {
-        logger.error(`App - postSignIn Service error\n: ${err.message} \n${JSON.stringify(err)}`);
-        return errResponse(baseResponse.DB_ERROR);
-    }
-}

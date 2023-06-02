@@ -74,3 +74,12 @@ exports.getGroupId = async function(req,res) {
     return res.send(getGroupBysession);
 }
 
+/**
+ * API No. 1
+ * API Name : 그룹 생성 API
+ * [POST] /app/group
+ */
+exports.createGroup = async function (req, res) {
+  // return res.send(noticeResponse);
+  return res.render("../../../views/group/createGroup.ejs",{result:createGroupResponse});
+};

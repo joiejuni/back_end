@@ -1,8 +1,8 @@
 const {logger} = require("../../../config/winston");
 const {pool} = require("../../../config/database");
 const secret_config = require("../../../config/secret");
-const userProvider = require("./attendProvider");
-const userDao = require("./attendDao");
+const noticeProvider = require("./noticeProvider");
+const noticeDao = require("./noticeDao");
 const baseResponse = require("../../../config/baseResponseStatus");
 const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
@@ -110,3 +110,62 @@ exports.editUser = async function (id, nickname) {
         return errResponse(baseResponse.DB_ERROR);
     }
 }
+
+
+
+
+
+//공지글 작성
+exports.createNotice = async function (userId, groupId, title, contents, category) {
+    try {
+
+      const insertNoticeParams = [userId, groupId, title, contents, category];
+
+      const connection = await pool.getConnection(async (conn) => conn);
+
+      const createNoticeResult = await noticeDao.insertNotice(connection, insertNoticeParams);
+      console.log(`추가된 Notice : ${createNoticeResult[0].insertid}`)
+      connection.release();
+      return response(baseResponse.SUCCESS);
+
+    } catch (err) {
+        console.log(err)
+        // logger.error(`App - createReview Service error\n: ${err.message}`);
+        return errResponse(baseResponse.DB_ERROR);
+    }
+};
+
+// exports.createNotice = async function (userId, groupId, title, contents, fileLink, fileExten, fileName) {
+//   try {
+
+//     const insertNoticeParams = [userId, groupId, title, contents, fileLink, fileExten, fileName];
+
+//     const connection = await pool.getConnection(async (conn) => conn);
+
+//     const createNoticeResult = await noticeDao.insertNotice(connection, insertReviewParams);
+//     console.log(`추가된 Notice : ${createNoticeResult[0].insertid}`)
+//     connection.release();
+//     return response(baseResponse.SUCCESS);
+
+//   } catch (err) {
+//       console.log(err)
+//       // logger.error(`App - createReview Service error\n: ${err.message}`);
+//       return errResponse(baseResponse.DB_ERROR);
+//   }
+// };
+
+
+
+// 공지글 수정
+exports.editNotice = async function (groupId, noticeId, title, contents) {
+  try {
+    const updateNoticeParams = [title, contents, groupId, noticeId];
+    const connection = await pool.getConnection(async (conn) => conn);
+    const editNoticeResult = await noticeDao.updateNotice(connection, updateNoticeParams);
+
+    return response(baseResponse.SUCCESS);
+  } catch (err) {
+    logger.err(`App  - editNotice Service error\n: ${err.message}`);
+    return errResponse(baseResponse.DB_ERROR);
+  }
+};

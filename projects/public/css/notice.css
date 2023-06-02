@@ -1,0 +1,372 @@
+body {
+  background-color: #FBFCFF;
+  margin: 0;
+  width: 1440px;
+  /* height: 1024px; */
+  height: 100%;
+}
+
+.sidebar {
+  width: 350px;
+  height: 100%;
+  background-color: rgba(177, 178, 255, 0.73);
+  border-radius: 35px;
+  position: absolute;
+  left: 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.left-sidebar {
+  width: 110px;
+  height: 100%;
+  background-color: #F6F7FB;
+  position: absolute;
+  left: 0;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.right-sidebar {
+  width: 320px;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  right: 0px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.profile-text {
+  color: #9799FE;
+  font-size: 18pt;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding-left: 30px;
+  padding-top: 20px;
+  font-weight: 700;
+}
+
+.content {
+  /* width: calc(100%-320px); */
+  width: 1200px;
+  height: 100%;
+  background-color: #FBFCFF;
+  /* position: relative; */
+  position: absolute;
+  left: 680px;
+  /* border: 1px solid; */
+  /* margin-left: 300px; */
+  /* margin: 0 auto; */
+}
+
+/*left-sidebar*/
+#logo {
+  width: 80px;
+  margin-top: 40px;
+  margin-left: 12px;
+  margin-bottom: 20px;
+}
+#home, #members, #user, #settings {
+  width: 35px;
+  position: relative;
+  right: 10px;
+  margin-bottom: 65px;
+}
+
+#group_name {
+  color: white;
+  font-weight: 700;
+  /* width: 240px; */
+  font-size: 26pt;
+  position: relative;
+  left: 120px;
+}
+
+.sidebar-menu {
+  width: 240px;
+  position: relative;
+  left: 90px;
+  top: 20px;
+}
+.sidebar-menu-items {
+  margin-bottom: 55px;
+}
+
+.sidebar-menu-items > a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.notice-board-category {
+  margin-top: 25px;
+}
+.notice-board-category > a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/*right-sidebar*/
+.right-sidebar-icons {
+  width: 28px;
+  position: relative;
+  left: 215px;
+  top: 22px;
+  margin-left: 10px;
+}
+.profile {
+  /* border: solid 1px; */
+  position: relative;
+  top: 80px;
+  margin: 0 auto;
+  text-align: center;
+}
+#profile-img {
+  width: 150px;
+  height: 150px;
+  /* border: 1px solid ; */
+  object-fit: cover;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.profile-name {
+  font-size: 28px;
+  width: 160px;
+  margin: 0 auto;
+  text-align: center;
+  /* border: 1px solid; */
+  margin-bottom: 5px;
+}
+.grade {
+  width: 110px;
+  height: 30px;
+  background-color: #C9BCFF;
+  margin: 0 auto;
+  border-radius: 15px;
+  /* border: 1px solid; */
+  color: white;
+  padding-top: 3px;
+}
+
+.member_or_chatting {
+  position: relative;
+  top: 115px;
+  /* border: 1px solid; */
+  text-align: center;
+}
+.selectbar {
+  width: 180px;
+  height: 60px;
+  font-size: 16px;
+  background-color: #9799FE;
+  margin: 0 auto;
+  border-radius: 40px;
+  padding-bottom: 8px;
+}
+.selectbar > p {
+  display: inline-block;
+}
+.selectbar > .selected {
+  border-radius: 30px;
+  background-color: white;
+  color: #6E63B6;
+  width: 90px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+.selectbar > .unselected {
+  color: white;
+  /* border: 1px solid; */
+}
+
+
+
+body {
+  background-color: #FBFCFF;
+  margin: 0;
+  width: 1440px;
+  /* height: 1024px; */
+  height: 100%;
+}
+
+/*게시판 헤더*/
+.notice-board-header {
+  height: 260px;
+  padding: 0 70px;
+  position: relative;
+  /* border: 1px solid; */
+}
+.notice-board-name {
+  font-size: 30pt;
+  font-weight: 700;
+  position: absolute;
+  top: 40px;
+  /* border: 1px solid; */
+}
+.wrapper {
+  height: 40px;
+  position: relative;
+  top: 180px;
+  /* border: 1px solid; */
+  width: 100%;
+}
+.searchbar {
+  background-color: #F0F0F0;
+  width: 300px;
+  height: 40px;
+  border-radius: 12px;
+  display: inline-block;
+  position: absolute;
+}
+.searchbar > p {
+  display: inline-block;
+  /* border: 1px solid; */
+  position: relative;
+  bottom: 15px;
+  left: 25px;
+  color: #8B8B8B;
+  font-size: 20px;
+}
+#search-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: 195px;
+  bottom: 7px;
+  opacity: 60%;
+}
+.sorting_options {
+  display: inline-block;
+  width: 100px;
+  height: 45px;
+  position: relative;
+  left: 89%;
+  /* border: 1px solid; */
+}
+.sorting_options > div > p {
+  display: inline-block;
+  font-size: 14px;
+}
+.circle-selected {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: #C6C7FF;
+  display: inline-block;
+  margin-right: 5px;
+}
+.circle-notselected {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: white;
+  display: inline-block;
+  margin-right: 5px;
+}
+.recent-first {
+  height: 25px;
+  position: absolute;
+  bottom: 37px;
+  right: 0;
+}
+.old-first {
+  height: 25px;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+}
+
+
+/* 게시물 목록*/
+.post {
+ /* border: 1px solid; */
+ position: relative;
+ width: 90%;
+ height: 800px;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 30px;
+ /* overflow: auto; */
+ overflow: hidden;
+}
+/* 스크롤바 */
+/*
+.post::-webkit-scrollbar {
+  width: 15px;
+}
+.post::-webkit-scrollbar-thumb {
+  background-color: #dcd4fd;
+  border-radius: 40px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.post::-webkit-scrollbar-track {
+  background-color: #F0F0F0;
+  border-radius: 40px;
+  box-shadow: inset 0px 0px 5px white;
+} */
+.wrapper-top {
+  /* margin-top: 50px; */
+  /* border-top: 1px solid #808080; */
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+}
+.post_title {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+}
+.post_date {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  color: #808080;
+  padding-right: 30px;
+}
+.wrapper-down {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 30px 0;
+}
+.post_content {
+  display: inline-block;
+  font-size: 18px;
+  padding-left: 30px;
+}
+.post_writer {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  padding-right: 30px;
+}
+
+/* 페이지 */
+.wrapper-page {
+  height: 30px;
+  /* border: 1px solid; */
+  padding-left: 470px;
+  margin-top: 20px;
+}
+.page {
+  float: left;
+}
+.page >li { 
+  list-style-type : disc; /* 점으로 된 목록 */
+  font-size: 25px;
+  float: left;
+  margin-right: 40px;
+  cursor: pointer;
+} 
+.page > li:last-child {
+  color:#9799FE;
+}

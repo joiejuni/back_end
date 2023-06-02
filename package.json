@@ -1,9 +1,24 @@
 {
   "dependencies": {
-    "dotenv": "^16.1.3",
-    "express-mysql-session": "^3.0.0",
-    "express-session": "^1.17.3",
-    "session-file-store": "^1.5.0",
-    "uuid": "^9.0.0"
-  }
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "name": "back_end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dongodonglak/back_end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dongodonglak/back_end/issues"
+  },
+  "homepage": "https://github.com/Dongodonglak/back_end#readme",
+  "description": ""
 }

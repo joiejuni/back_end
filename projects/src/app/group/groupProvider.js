@@ -36,4 +36,3 @@ exports.checkCode = async function (groupCode) {
 
     return groupCodeResult;
 };
-
