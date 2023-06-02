@@ -14,8 +14,9 @@ ul{
     position: absolute;
     width: 836px;
     height: 1024px;
-    left: 312px;
+    left: 350px;
     top: 0px;
+    margin: 0 160px 0 160px;
 }
 
 h1{
