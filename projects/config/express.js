@@ -1,6 +1,7 @@
 const express = require('express');
 const compression = require('compression');
 const methodOverride = require('method-override');
+const sessionMiddleware = require('./sessionMiddleware');
 var cors = require('cors');
 const path = require('path');
 const { pool } = require('./database');
@@ -30,11 +31,6 @@ module.exports = function () {
     require('../src/app/group/groupRoute')(app);
     require('../src/app/myPage/mypageRoute')(app);
     // require('../src/app/Board/boardRoute')(app);
-
-    app.use(express.static(path.join(parentDirectory, 'public')));
-
-    /* App (Android, iOS) */
-    // TODO: 도메인을 추가할 경우 이곳에 Route를 추가하세요.
     require('../src/app/Notice/noticeRoute')(app);
 
     return app;
