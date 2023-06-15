@@ -7,19 +7,12 @@ const {response, errResponse} = require("../../../config/response");
 const regexEmail = require("regex-email");
 const {emit} = require("nodemon");
 
-/**
- * API No. 1
- * API Name : 유저 생성 (회원가입) API
- * [POST] /app/users
- */
+// 유저 생성 (회원가입)
+
 exports.postUsers = async function (req, res) {
 
-    /**
-     * Body: userId, userName, password, email
-     */
-    const {userId, userName, email, password, checkpw} = req.body;
+    const {userName, email, password, checkpw} = req.body;
 
-    // 빈 값 체크
     if (!email)
         return res.send(response(baseResponse.SIGNUP_EMAIL_EMPTY));
 
@@ -35,9 +28,7 @@ exports.postUsers = async function (req, res) {
     if (password !== checkpw)
         return res.send(response(baseResponse.SIGNUP_INCORRECT_PASSWORD));
 
-
     const signUpResponse = await userService.createUser(
-        userId,
         userName,
         email,
         password
@@ -46,16 +37,11 @@ exports.postUsers = async function (req, res) {
     return res.send(signUpResponse);
 };
 
-/**
- * API No. 2
- * API Name : 유저 조회 API (+ 이메일로 검색 조회)
- * [GET] /app/users
- */
+// 유저 조회
+
 exports.getUsers = async function (req, res) {
 
-    /**
-     * Query String: email
-     */
+    
     const email = req.query.email;
 
     if (!email) {

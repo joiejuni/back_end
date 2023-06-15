@@ -5,7 +5,6 @@
     <title>동고동락</title>
     <meta charset="utf-8">
     <link href="/public/css/signup.css" rel="stylesheet">
-    <!-- <script type="text/javascript" src="./js/main.js" defer></script> -->
     <!-- <script src="./js/includeHTML.js"></script> -->
 
   </head>
@@ -15,18 +14,13 @@
     <script>
       includeHTML();
     </script> -->
-    <form action="http://localhost:3000/app/users/signup" method="POST">
+    <form action="/app/users/signup" method="POST">
       <div class="header">
-        <img id="logo" src="/public/Images/Logo.png">
+        <img id="logo" src="/public/img/Logo.png">
         <p>회원가입</p>
       </div>
 
       <div class="sign-up">
-      
-        <div class="id">
-            <p>아이디</p>
-            <input type="text" name="userId" placeholder="아이디를 입력하세요">
-        </div>
 
         <div class="name">
             <p>이름</p>
@@ -35,8 +29,13 @@
 
         <div class="email">
             <p>이메일</p>
-            <input type="email" name="email" placeholder="email@example.com">
+            <input type="text" name="email" placeholder="이메일을 입력하세요">
         </div>
+
+        <!-- <div class="checkemail">
+          <p>이메일 인증</p>
+          <input type="number" name="checkemail" placeholder="이메일 인증번호를 입력하세요">
+        </div> -->
 
         <div class="password">
             <p>비밀번호</p>
@@ -50,7 +49,11 @@
         
       </div>
 
-      <class="btn sign-up">[가입하기]</div>
+      <button class="btn sign-up" type="subumit">
+        <a href="/app/login/makeLogin">
+        [가입하기]
+        </a>
+      </button>
 
     </form>
     

@@ -38,21 +38,9 @@ async function selectUserEmail(connection, email) {
   }
 
 
-  async function selectUserId(connection, sessionId) {
-    const selectUserIdQuery = `
-          SELECT JSON_EXTRACT(data, '$.userId') AS userId
-          FROM sessions
-          WHERE session_id = ?;`;
-    const selectUserIdRow = await connection.query(
-        selectUserIdQuery,
-        sessionId
-    );
-    return selectUserIdRow[0];
-  }
 
   module.exports={
     selectUserPassword,
     selectUserEmail,
     selectUserAccount,
-    selectUserId
   }

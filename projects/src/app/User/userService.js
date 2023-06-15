@@ -7,19 +7,16 @@ const baseResponse = require("../../../config/baseResponseStatus");
 const {response} = require("../../../config/response");
 const {errResponse} = require("../../../config/response");
 
+const path = require('path');
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const {connect} = require("http2");
+const userRoute = require("./userRoute");
 
 // Service: Create, Update, Delete 비즈니스 로직 처리
 
-exports.createUser = async function (userId, userName, email, password) {
+exports.createUser = async function (userName, email, password) {
     try {
-        // 아이디 중복 확인
-        const userIdRows = await userProvider.userIdCheck(userId);
-        if (userIdRows.lengt > 0)
-            return errResponse(baseResponse.SIGNUP_REDUNDANT_USERID);
-
         // 이메일 중복 확인
         const emailRows = await userProvider.emailCheck(email);
         if (emailRows.length > 0)
@@ -31,7 +28,7 @@ exports.createUser = async function (userId, userName, email, password) {
             .update(password)
             .digest("hex");
 
-        const insertUserInfoParams = [userId, userName, email, password];
+        const insertUserInfoParams = [userName, email, hashedPassword];
 
         const connection = await pool.getConnection(async (conn) => conn);
 
