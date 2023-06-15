@@ -1,9 +1,9 @@
 // 그룹 조회 
 async function selectGroups(connection,userId) {
     const selectGroupListQuery = `
-        SELECT userId, groupName, groupType
-        FROM myGroup
-        WHERE userId = ?;
+        SELECT JoinGroup.userId, myGroup.groupName, myGroup.groupType
+        FROM myGroup, JoinGroup
+        WHERE myGroup.groupId = JoinGroup.groupId AND JoinGroup.userId = ?;
       `;
     const [groupRows] = await connection.query(selectGroupListQuery,userId);
     return groupRows;
@@ -12,26 +12,15 @@ async function selectGroups(connection,userId) {
 // 운영진 여부 확인
 async function selectGroupLeader(connection,userId,groupId) {
     const selectGroupLeaderQuery = `
-        SELECT membershipFee
-        FROM myGroup
-        WHERE userId = ? AND groupId = ?;
+        SELECT myGroup.membershipFee
+        FROM myGroup, JoinGroup
+        WHERE myGroup.groupId = JoinGroup.groupId AND JoinGroup.userId = ? AND JoinGroup.groupId = ?;
       `;
     const [isLeaderRows] = await connection.query(selectGroupLeaderQuery,userId,groupId);
     return isLeaderRows;
   }
   
 
-// 그룹 아이디 가져오기
-async function selectGroupId(connection, sessionId) {
-    const selectGroupIdQuery = `
-        SELECT JSON_EXTRACT(data, '$.groupId') AS userId
-        FROM sessions
-        WHERE session_id = ?;
-      `;
-    const [GroupIdRows] = await connection.query(selectGroupIdQuery,sessionId);
-    return GroupIdRows;
-  }
-  
 // 그룹에 가입한 참여자인지 확인 
 async function selectGroupmember(connection, userId, groupId) {
     const selectGroupmemQuery = `
@@ -78,7 +67,6 @@ async function selectGroupInfo(connection,groupId){
   module.exports = {
     selectGroups,
     selectGroupLeader,
-    selectGroupId,
     selectGroupmember,
     selectGroupCode,
     insertGroupUser,

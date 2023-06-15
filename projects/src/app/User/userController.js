@@ -34,7 +34,9 @@ exports.postUsers = async function (req, res) {
         password
     );
 
-    return res.send(signUpResponse);
+    if(signUpResponse.isSuccess==true){
+        res.render('../views/login/login.ejs');
+    }
 };
 
 // 유저 조회

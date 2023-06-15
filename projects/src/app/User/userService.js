@@ -27,7 +27,7 @@ exports.createUser = async function (userName, email, password) {
             .createHash("sha512")
             .update(password)
             .digest("hex");
-
+        console.log(hashedPassword);
         const insertUserInfoParams = [userName, email, hashedPassword];
 
         const connection = await pool.getConnection(async (conn) => conn);
