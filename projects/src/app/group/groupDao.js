@@ -1,7 +1,7 @@
 // 그룹 조회 
 async function selectGroups(connection,userId) {
     const selectGroupListQuery = `
-        SELECT JoinGroup.userId, myGroup.groupName, myGroup.groupType
+        SELECT JoinGroup.userId, myGroup.groupName, myGroup.groupType, myGroup.groupId
         FROM myGroup, JoinGroup
         WHERE myGroup.groupId = JoinGroup.groupId AND JoinGroup.userId = ?;
       `;
@@ -55,7 +55,7 @@ async function insertGroupUser(connection,groupId,userId,nickname) {
 
 async function selectGroupInfo(connection,groupId){
   const selectGroupInfoQuery = `
-          SELECT groupName
+          SELECT groupName, groupId
           FROM myGroup
           WHERE groupId = ?;
   `;

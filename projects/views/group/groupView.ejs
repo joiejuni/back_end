@@ -21,7 +21,7 @@
       <div class="Search">
         <div class="searchMent">
           <input class="searchBlank" type="text"/>
-          <img class="searchBtn" src="img/searchbtn.png"/>
+          <img class="searchBtn" src="/img/searchbtn.png"/>
         </div>
       </div>
       <ul class="grpList">
@@ -29,13 +29,13 @@
           <p class="newBlockContent">
           +
           <br/>
-          만들기
+          만들기 
           </p>
         </div>
-        <% data.forEach(getGroup => { %>
+        <% data.forEach(Group => { %>
         <ul class="GrpEnter">
           <div class="groupInfo">
-            <p class="groupName"><a href="/app/groups/views/<%= getGroup.groupId %>"><%= getGroup.groupName %></a></p>
+            <p class="groupName"><a href="/app/groups/views/<%= Group.groupId %>"><%= Group.groupName %></a></p>
           </div>
         </ul>
         <% }) %>
@@ -45,10 +45,10 @@
   <div class="myInfobar">
     <div class="myInfoContent">
       <p class="myinfoTxt">My Info</p>
-      <img class="Settings" src="../public/img/settings.png"/>
-      <img class="Notification" src="../public/img/notification.png"/>
+      <img class="Settings" src="/img/settings.png"/>
+      <img class="Notification" src="/img/notification.png"/>
     </div>
-    <img class="profileImg" src="../public/img/profileimg.png"/>
+    <img class="profileImg" src="/img/profileimg.png"/>
     <p class="nickName">mymelody</p>
     <div class="memberbtn-9jU">member</div>
   </div>

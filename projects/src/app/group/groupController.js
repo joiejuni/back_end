@@ -18,7 +18,7 @@ const groupService = require("./groupService");
         const groupResponse = await groupService.postGroups(userId,groupId,groupCode);
         const groupInfo = await groupProvider.getGroupInfo(groupId);
         if(groupResponse!==undefined){
-            res.render('group/groupProfile',{data:groupInfo});
+            res.render('../views/group/groupProfile',{data:groupInfo});
         }
     };
 
@@ -30,21 +30,22 @@ const groupService = require("./groupService");
         let userId = req.session.userId;
         userId = req.session.userId;
         const groupsallRes = await groupProvider.viewGroup(userId);
-        res.render('group/groupView',{data:groupsallRes});
+        res.render('../views/group/groupView',{data:groupsallRes});
     }
 
 /*
     3. 그룹 접속 
-    유형: POST
+    유형: GET
     body: userId, groupId
 */
     exports.viewGroup = async function (req,res){
+        const userId = req.session.userId;
         const groupId = req.params.groupId;
         const isGroupLeader = await groupService.confirmLeader(userId,groupId);
         req.session.groupId = groupId;
         req.session.isLeader = isGroupLeader;
         const groupInfo = await groupProvider.getGroupInfo(groupId);
-        res.render('main/mainPage',{data:groupInfo});
+        res.render('../views/main/mainPage',{data:groupInfo});
     }
 
 /*
@@ -54,9 +55,8 @@ const groupService = require("./groupService");
 */
     exports.createLink = async function (req,res){
         let groupId = req.session.groupId;
-        groupId = req.params.groupId;
         const linkGroupId = "http://34.64.32.180/app/groupjoins/" + groupId;
-        res.render('group/groupLink',{data:linkGroupId});
+        res.render('../views/group/groupLink',{data:linkGroupId});
     }
 
 /*
@@ -67,7 +67,7 @@ const groupService = require("./groupService");
     exports.joinGroup = async function (req,res){
         let groupId = req.params.groupId;
         const groupJoinResult = await groupProvider.getGroupInfo(groupId);
-        res.render('group/groupInvite',{data:groupJoinResult});
+        res.render('../views/group/groupInvite',{data:groupJoinResult});
     }
 
 /*
@@ -84,6 +84,6 @@ const groupService = require("./groupService");
         const createProfileResult = await groupService.postProfile(groupId,userId,nickname);
         const groupInfoResult = await groupProvider.getGroupInfo(groupId);
         if(createProfileResult.isSuccess){
-            res.render('main/mainPage',{data:groupInfoResult});
+            res.render('../views/main/mainPage',{data:groupInfoResult});
         }
     }

@@ -10,10 +10,10 @@ module.exports = function(app){
     app.get('/app/groups', group.getGroups);
 
     //3. 그룹 접속 API 
-    app.post('/app/groups/:groupId', group.viewGroup);
+    app.get('/app/groups/views/:groupId', group.viewGroup);
 
     //4. 그룹 참여 링크 생성 API
-    app.get('/app/group/link', group.createLink);
+    app.get('/app/groups/link', group.createLink);
 
     //5. 그룹 참여 링크로 가입 페이지 접속
     app.get('/app/group/groupjoins/:groupId',group.joinGroup);
