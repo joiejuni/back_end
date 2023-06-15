@@ -22,6 +22,7 @@ module.exports = function () {
     app.use(sessionMiddleware);
     require('../src/app/login/loginRoute')(app);
     app.set("view engine","ejs");
+    app.set("views","../views");
     app.use(express.static(__dirname + './../public'));
     // app.use(express.static('../public'));
     
@@ -30,7 +31,6 @@ module.exports = function () {
     require('../src/app/assignment/assignRoute')(app);
     require('../src/app/group/groupRoute')(app);
     require('../src/app/myPage/mypageRoute')(app);
-    // require('../src/app/Board/boardRoute')(app);
     require('../src/app/Notice/noticeRoute')(app);
 
     return app;

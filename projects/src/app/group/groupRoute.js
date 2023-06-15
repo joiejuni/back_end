@@ -2,7 +2,7 @@ module.exports = function(app){
   const group = require('./groupController');
 
   // 1. 그룹 생성 API
-  app.post('/app/group', group.createGroup);
+    app.post('/app/group', group.createGroup);
     // 1. 그룹 가입 API 
     app.post('/app/groups/member',group.enterGroup);
 
@@ -13,8 +13,12 @@ module.exports = function(app){
     app.post('/app/groups/:groupId', group.viewGroup);
 
     //4. 그룹 참여 링크 생성 API
-    app.get('/app/groups/:groupId', group.createLink);
+    app.get('/app/group/link', group.createLink);
 
-    //5. 그룹 ID 가져오기 API
-    app.get('/app/groups/:groupId', group.getGroupId);
+    //5. 그룹 참여 링크로 가입 페이지 접속
+    app.get('/app/group/groupjoins/:groupId',group.joinGroup);
+
+    //6. 그룹 프로필 생성
+    app.post('/app/group/profile',group.createProfile);
+   
 };

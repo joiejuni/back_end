@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>그룹참여 - 그룹코드입력</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C800"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A800"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JejuGothic%3A400"/>
+  <link rel="stylesheet" href="/css/grp_inviteLink.css"/>
+</head>
+<body>
+<div class="mainContent">
+  <div class="mainLayout">
+    <p class="Title">그룹 초대 링크</p>
+    <div class="downContent">
+      <p class="inputblank"><%= data %></p>
+      <button class="copyBtn">복사하기</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sidelayout">
+      <div class="logo">
+        <p class="d1">D</p>
+        <p class="d2">D</p>
+      </div>
+      <div class="sidebtn">
+        <img class="home" src="/img/home.png"/>
+        <img class="team" src="/img/team.png"/>
+        <img class="mypage" src="/img/mypage.png"/>
+        <img class="settings" src="/img/settings.png"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 이벤트 리스너 추가
+  document.querySelector('.copyBtn').addEventListener('click', function() {
+    var input = document.querySelector('.inputblank');
+    var text = input.textContent;
+
+    var tempInput = document.createElement('textarea');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    alert('복사되었습니다.');
+  });
+</script>
+</body>
+</html>

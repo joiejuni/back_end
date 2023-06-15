@@ -20,16 +20,8 @@ exports.login = async function (req, res) {
     if(userId!== baseResponse.SIGNIN_EMAIL_WRONG && userId!== baseResponse.SIGNIN_PASSWORD_WRONG){
         req.session.userId = userId;
     }
-    res.render('../../../views/login/login.ejs');
 };
 
-exports.getUserId = async function (req,res){
-    
-    const sessionId = req.sessionID;
-    console.log(sessionId);
-    sessionId = req.params.sessionId;
-    const userIdResponse = await loginProvider.returnUserId(sessionId);
-    if(userIdResponse.length==0) return res.send(response(baseResponse.DB_ERROR));
-    //   return res.send(response(baseResponse.SUCCESS,userIdResponse));
-    return userIdResponse;
+exports.makeLogin = async function(req,res){
+    res.render('login');
 }

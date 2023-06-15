@@ -1,26 +1,25 @@
-//그룹코드로 그룹 참여,그룹코드 입력 후 그룹 프로필사진,이름 입력 그룹 생성, 가입한 그룹 조회, 생성 그룹 조회, 그룹 접속, 그룹 탈퇴
 const groupProvider = require("./groupProvider");
 const groupService = require("./groupService");
-const baseResponse = require("../../../config/baseResponseStatus");
-const {response, errResponse} = require("../../../config/response");
-const getUserId = require("../login/loginController");
-const { v4: uuidv4 } = require('uuid');
-// 1. 그룹 참여
+
+
 /*
     1. 그룹 참여
     유형: POST
-    Body: userId, 그룹 코드, 링크 (링크를 통해 groupId 추출)
+    Body: userId, 그룹 코드, groupId
     예외 처리: 그룹이 존재하는지, 그룹에 이미 참여했는지 확인, 코드가 맞는지 확인
  */
 
     exports.enterGroup = async function (req, res) {
-        const userId = getUserId.getUserId;
+        let userId = req.session.userId;
         userId = req.body.userId;
-        const link = req.body.link;
-        const groupId = link.split("/")[1];
-        const groupResponse = await groupService.postGroups(userId,groupId);
-
-        return res.send(groupResponse);
+        let groupId = req.session.groupId;
+        groupId = req.body.groupid;
+        const groupCode = req.body.groupCode;
+        const groupResponse = await groupService.postGroups(userId,groupId,groupCode);
+        const groupInfo = await groupProvider.getGroupInfo(groupId);
+        if(groupResponse!==undefined){
+            res.render('group/groupProfile',{data:groupInfo});
+        }
     };
 
 /*
@@ -28,10 +27,10 @@ const { v4: uuidv4 } = require('uuid');
     유형: GET
 */
     exports.getGroups = async function (req,res){
-        const userId = getUserId.getUserId;
-        req.parmas.userId = userId;
+        let userId = req.session.userId;
+        userId = req.session.userId;
         const groupsallRes = await groupProvider.viewGroup(userId);
-        return res.send(groupsallRes);
+        res.render('group/groupView',{data:groupsallRes});
     }
 
 /*
@@ -40,14 +39,12 @@ const { v4: uuidv4 } = require('uuid');
     body: userId, groupId
 */
     exports.viewGroup = async function (req,res){
-        const userId = getUserId.getUserId;
-        req.params.userId = userId;
-        const groupId = req.parms.groupId;
-        //그룹아이디에 속한 그룹장 == userId 인지를 불러오기 -> 저장
+        const groupId = req.params.groupId;
         const isGroupLeader = await groupService.confirmLeader(userId,groupId);
         req.session.groupId = groupId;
         req.session.isLeader = isGroupLeader;
-        return res.send(isGroupLeader);
+        const groupInfo = await groupProvider.getGroupInfo(groupId);
+        res.render('main/mainPage',{data:groupInfo});
     }
 
 /*
@@ -56,30 +53,37 @@ const { v4: uuidv4 } = require('uuid');
     path variable : groupId
 */
     exports.createLink = async function (req,res){
-        const inviteLink = uuidv4();
-        const sessionId = req.sessionID;
-        const getGroupBysession = await groupProvider.SearchGroupId(sessionId);
-        const groupId = getGroupBysession;
-        const linkGroupId = "http://" + inviteLink + "/" + groupId; 
-        // 그룹Id을 가져오기! 
-        return res.send(linkGroupId);
+        let groupId = req.session.groupId;
+        groupId = req.params.groupId;
+        const linkGroupId = "http://34.64.32.180/app/groupjoins/" + groupId;
+        res.render('group/groupLink',{data:linkGroupId});
     }
-/*
-    5. 그룹Id 가져오기
-    유형: GET
-*/
-exports.getGroupId = async function(req,res) {
-    const sessionId = req.sessionID;
-    const getGroupBysession = await groupProvider.SearchGroupId(sessionId);
-    return res.send(getGroupBysession);
-}
 
-/**
- * API No. 1
- * API Name : 그룹 생성 API
- * [POST] /app/group
- */
-exports.createGroup = async function (req, res) {
-  // return res.send(noticeResponse);
-  return res.render("../../../views/group/createGroup.ejs",{result:createGroupResponse});
-};
+/*
+    5. 그룹 참여 링크로 가입 페이지 접속
+    유형: GET
+    path variable : groupId
+*/
+    exports.joinGroup = async function (req,res){
+        let groupId = req.params.groupId;
+        const groupJoinResult = await groupProvider.getGroupInfo(groupId);
+        res.render('group/groupInvite',{data:groupJoinResult});
+    }
+
+/*
+    6. 그룹 프로필 생성
+    유형: POST
+    path variable : groupId
+*/
+    exports.createProfile = async function (req,res){
+        let userId = req.session.userId;
+        userId = req.body.userId;
+        let groupId = req.session.groupId;
+        groupId = req.body.groupid;
+        const nickname = req.body.nickname;
+        const createProfileResult = await groupService.postProfile(groupId,userId,nickname);
+        const groupInfoResult = await groupProvider.getGroupInfo(groupId);
+        if(createProfileResult.isSuccess){
+            res.render('main/mainPage',{data:groupInfoResult});
+        }
+    }

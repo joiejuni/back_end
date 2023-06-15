@@ -44,24 +44,34 @@ async function selectGroupmember(connection, userId, groupId) {
   }
 
 // 그룹 코드가 맞는지 확인 
-async function selectGroupCode(connection,groupCode) {
+async function selectGroupCode(connection,groupId,groupCode) {
     const selectCodeQuery = `
-        SELECT groupId
+        SELECT groupCode
         FROM myGroup
-        WHERE groupCode = ?;
+        WHERE groupId = ?
       `;
-    const [GroupCodeRows] = await connection.query(selectCodeQuery,groupCode);
+    const [GroupCodeRows] = await connection.query(selectCodeQuery,groupId,groupCode);
     return GroupCodeRows;
   }
   
 //그룹 가입
-async function insertGroupUser(connection,groupId,userId,profileImg,nickname) {
+async function insertGroupUser(connection,groupId,userId,nickname) {
     const insertGroupUserQuery = `
-        INSERT INTO JoinGroup(groupId,userId,profileImg,nickname,isManager)
-        VALUES(?,?,?,?,0)
+        INSERT INTO JoinGroup(groupId,userId,nickname,isManager)
+        VALUES(?,?,?,0)
     `;
-    const [groupUserRows] = await connection.query(insertGroupUserQuery, groupId,userId,profileImg,nickname);
+    const [groupUserRows] = await connection.query(insertGroupUserQuery, [groupId,userId,nickname]);
     return groupUserRows;
+}
+
+async function selectGroupInfo(connection,groupId){
+  const selectGroupInfoQuery = `
+          SELECT groupName
+          FROM myGroup
+          WHERE groupId = ?;
+  `;
+  const [groupInfoRows] = await connection.query(selectGroupInfoQuery, [groupId]);
+  return groupInfoRows;
 }
 
 
@@ -72,5 +82,6 @@ async function insertGroupUser(connection,groupId,userId,profileImg,nickname) {
     selectGroupmember,
     selectGroupCode,
     insertGroupUser,
+    selectGroupInfo,
   };
   

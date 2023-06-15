@@ -36,3 +36,11 @@ exports.checkCode = async function (groupCode) {
 
     return groupCodeResult;
 };
+
+exports.getGroupInfo = async function(groupId){
+    const connection = await pool.getConnection(async (conn) => conn);
+    const groupInfoResult = await groupDao.selectGroupInfo(connection,groupId);
+    connection.release();
+
+    return groupInfoResult;
+}

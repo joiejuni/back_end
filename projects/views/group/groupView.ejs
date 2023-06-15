@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>그룹 조회하기</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JejuGothic%3A400"/>
+  <link rel="stylesheet" href="../../public/css/groupView.css"/>
+</head>
+<body>
+<div class="fullScreen">
+  <div class="screenContent">
+    <img class="Logo" src="../public/img/logo.png"/>
+    <div class="line">
+    </div>
+    <div class="mainContent">
+      <div class="Search">
+        <div class="searchMent">
+          <input class="searchBlank" type="text"/>
+          <img class="searchBtn" src="../public/img/searchbtn.png"/>
+        </div>
+      </div>
+      <ul class="grpList">
+        <div class="newBlock">
+          <p class="newBlockContent">
+          +
+          <br/>
+          만들기
+          </p>
+        </div>
+        <% data.forEach(getGroup => { %>
+        <ul class="GrpEnter">
+          <div class="groupInfo">
+            <p class="groupName"><a href="/app/groups/views/<%= getGroup.groupId %>"><%= getGroup.groupName %></a></p>
+          </div>
+        </ul>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+  <div class="myInfobar">
+    <div class="myInfoContent">
+      <p class="myinfoTxt">My Info</p>
+      <img class="Settings" src="../public/img/settings.png"/>
+      <img class="Notification" src="../public/img/notification.png"/>
+    </div>
+    <img class="profileImg" src="../public/img/profileimg.png"/>
+    <p class="nickName">mymelody</p>
+    <div class="memberbtn-9jU">member</div>
+  </div>
+</div>
+</body>

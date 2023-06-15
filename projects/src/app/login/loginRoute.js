@@ -4,6 +4,5 @@ module.exports = function(app){
     // 1. 로그인 API
     app.post('/app/login', login.login);
  //   app.get('/form-handler', login.login);
-    app.get('/app/sessionId', login.getUserId);
-
+    app.get('app/login/makeLogin',login.makeLogin);
 }
