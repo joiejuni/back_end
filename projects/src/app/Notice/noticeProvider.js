@@ -13,6 +13,35 @@ exports.noticeListResult = async function (groupId) {
 
   return noticeListResult;
 };
+// 페이징 연습
+exports.pagingResult = async function (groupId) {
+  const connection = await pool.getConnection(async (conn) => conn);
+
+  const pagingResult = await noticeDao.pagedNotice(connection, groupId);
+  connection.release();
+
+  return pagingResult;
+}
+// 페이징 연습 - 최신순 cursor
+exports.pagingResult_Recent = async function (groupId, page) {
+  const connection = await pool.getConnection(async (conn) => conn);
+
+  const pagingResult = await noticeDao.pagedNotice_Recent(connection, groupId, page);
+  connection.release();
+
+  return pagingResult;
+}
+// 페이징 연습 - 오래된순 cursor
+exports.pagingResult_Old = async function (groupId, page) {
+  const connection = await pool.getConnection(async (conn) => conn);
+
+  const pagingResult = await noticeDao.pagedNotice_Old(connection, groupId, page);
+  connection.release();
+
+  return pagingResult;
+}
+
+
 
 // 특정 공지글 조회
 exports.noticeResult = async function (groupId, noticeId) {
@@ -22,3 +51,14 @@ exports.noticeResult = async function (groupId, noticeId) {
 
     return noticeSelectResult;
 };
+
+
+
+
+exports.makeNotice = async function (groupId) {
+  const connection = await pool.getConnection(async (conn) => conn);
+  const noticeResult = await noticeDao.makeNotice(connection, groupId);
+  connection.release();
+
+  return noticeResult;
+}

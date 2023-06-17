@@ -22,11 +22,8 @@ module.exports = function () {
     app.use(sessionMiddleware);
     require('../src/app/login/loginRoute')(app);
     app.set("view engine","ejs");
-    //app.set("views","../views");
     app.use(express.static(__dirname + './../public'));
-    // app.use(express.static('../public'));
     
-    // TODO: 도메인을 추가할 경우 이곳에 Route를 추가하세요.
     require('../src/app/attendance/attendRoute')(app);
     require('../src/app/assignment/assignRoute')(app);
     require('../src/app/group/groupRoute')(app);

@@ -25,13 +25,16 @@
         </div>
       </div>
       <ul class="grpList">
-        <div class="newBlock">
-          <p class="newBlockContent">
-          +
-          <br/>
-          만들기 
-          </p>
-        </div>
+        <form action="/app/createGroup" method="GET">
+            <div class="newBlock">
+                <p class="newBlockContent">
+                +
+                <br/>
+                <input type="submit">만들기 
+                </p>
+              </div>
+        </form>
+        
         <% data.forEach(Group => { %>
         <ul class="GrpEnter">
           <div class="groupInfo">

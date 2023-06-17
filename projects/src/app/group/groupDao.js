@@ -33,13 +33,13 @@ async function selectGroupmember(connection, userId, groupId) {
   }
 
 // 그룹 코드가 맞는지 확인 
-async function selectGroupCode(connection,groupId,groupCode) {
+async function selectGroupCode(connection,groupId) {
     const selectCodeQuery = `
-        SELECT groupCode
+        SELECT inviteCode
         FROM myGroup
         WHERE groupId = ?
       `;
-    const [GroupCodeRows] = await connection.query(selectCodeQuery,groupId,groupCode);
+    const [GroupCodeRows] = await connection.query(selectCodeQuery,[groupId]);
     return GroupCodeRows;
   }
   
@@ -62,7 +62,28 @@ async function selectGroupInfo(connection,groupId){
   const [groupInfoRows] = await connection.query(selectGroupInfoQuery, [groupId]);
   return groupInfoRows;
 }
+// 그룹 생성
+async function insertGroup(connection, groupName, groupType, groupImg, membershipFee) {
+  const createGroupQuery = `
+    INSERT INTO myGroup(groupName, groupType, groupImg, membershipFee)
+    VALUES (?, ?, ?, ?);
+    `
+  ;
 
+  const [groupRows] = await connection.query(createGroupQuery, groupName, groupType, groupImg, membershipFee);
+  return groupRows;
+}
+
+// 그룹에 가입
+async function joinGroup(connection, userId, groupId) {
+  const joinGroupQuery = `
+    INSERT INTO JoinGroup (userId, groupId, isManager)
+    VALUES (?, ?, 1);
+    `
+  ;
+  const [joinRows] = await connection.query(joinGroupQuery, [userId, groupId]);
+  return joinRows;
+}
 
   module.exports = {
     selectGroups,
@@ -71,5 +92,7 @@ async function selectGroupInfo(connection,groupId){
     selectGroupCode,
     insertGroupUser,
     selectGroupInfo,
+    insertGroup,
+    joinGroup
   };
   

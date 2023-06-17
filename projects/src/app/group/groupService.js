@@ -27,27 +27,24 @@ exports.confirmLeader = async function (userId,groupId) {
     }
 }
 
-exports.postGroups = async function (userId,groupId,groupCode) {
+exports.postGroups = async function (groupId) {
     try{
         const connection = await pool.getConnection(async (conn) => conn);
-        const checkGroupResult = await groupProvider.checkGroupId(connection,userId,groupId);
-        if(checkGroupResult) return errResponse(baseResponse.GROUP_EXIST_MEMBER);
-        const checkGroupCode = await groupDao.selectGroupCode(connection,groupId,groupCode);
-        if(groupCode==checkGroupCode) {
-            return checkGroupCode;
-        }
+        const checkGroupCode = await groupDao.selectGroupCode(connection,groupId);
+        return checkGroupCode;
 
     } catch (err) {
-        logger.error(`App - postSignIn Service error\n: ${err.message} \n${JSON.stringify(err)}`);
+        logger.error(`App - postGroups Service error\n: ${err.message}}`);
         return errResponse(baseResponse.DB_ERROR);
     }
 }
 
-exports.postProfile = async function (userId,groupId,nickname) {
+exports.postProfile = async function (groupId,userId,nickname) {
     try {
         const connection = await pool.getConnection(async (conn) => conn);
         const profileResult = await groupDao.insertGroupUser(connection,groupId,userId,nickname);
         connection.release();
+        console.log(profileResult);
         return response(baseResponse.SUCCESS);
 
     } catch (err) {
@@ -55,3 +52,37 @@ exports.postProfile = async function (userId,groupId,nickname) {
         return errResponse(baseResponse.DB_ERROR);
     }
 }
+
+// 그룹 생성
+exports.createGroup = async function (userId, groupName, groupType, groupImg, membershipFee) {
+    try {
+      const createGroupParams = [groupName, groupType, groupImg, parseInt(membershipFee)];
+      const connection = await pool.getConnection(async (conn) => conn);
+  
+      let groupId; // 그룹 ID를 저장할 변수 선언
+  
+      try {
+        await connection.beginTransaction(); // 트랜잭션 시작
+  
+        // 그룹 생성
+        const createGroupResult = await groupDao.insertGroup(connection, createGroupParams);
+        groupId = createGroupResult.insertId; // 생성된 그룹의 ID 저장
+  
+        // 그룹에 가입
+        await groupDao.joinGroup(connection, userId, groupId);
+  
+        await connection.commit(); // 트랜잭션 커밋
+      } catch (err) {
+        await connection.rollback(); // 트랜잭션 롤백
+        throw err; // 에러 다시 던지기
+      } finally {
+        connection.release(); // 커넥션 반환
+      }
+
+  
+      return response(baseResponse.SUCCESS);
+    } catch (err) {
+      console.log(err);
+      return errResponse(baseResponse.DB_ERROR);
+    }
+  };

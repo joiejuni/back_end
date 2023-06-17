@@ -18,11 +18,11 @@ exports.login = async function (req, res) {
     const {email,password} = req.body;
     const userId = await loginService.postSignIn(email, password);
     if (userId === baseResponse.SIGNIN_EMAIL_WRONG) {
+
         // 이메일이 잘못된 경우
         return res.send('<script>alert("잘못된 이메일입니다."); history.back();</script>');
     }
-    
-    else if (userId === baseResponse.SIGNIN_PASSWORD_WRONG) {
+    else if (userId === baseResponse.SIGNIN_EMAIL_WRONG) {
         // 비밀번호가 잘못된 경우
         return res.send('<script>alert("잘못된 비밀번호입니다."); history.back();</script>');
     }

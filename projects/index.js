@@ -1,7 +1,7 @@
 const express = require('./config/express');
 const {logger} = require('./config/winston');
 
-const port = 3000;
+const port = 80;
 express().listen(port);
 
 

@@ -1,3 +1,4 @@
+const baseResponseStatus = require("../../../config/baseResponseStatus");
 const groupProvider = require("./groupProvider");
 const groupService = require("./groupService");
 
@@ -10,15 +11,15 @@ const groupService = require("./groupService");
  */
 
     exports.enterGroup = async function (req, res) {
-        let userId = req.session.userId;
-        userId = req.body.userId;
         let groupId = req.session.groupId;
-        groupId = req.body.groupId;
         const groupCode = req.body.groupCode;
-        const groupResponse = await groupService.postGroups(userId,groupId,groupCode);
+        const groupResponse = await groupService.postGroups(groupId);
         const groupInfo = await groupProvider.getGroupInfo(groupId);
-        if(groupResponse!==undefined){
+        if(groupCode===groupResponse[0].inviteCode){
             res.render('../views/group/groupProfile',{data:groupInfo});
+        }
+        else{
+           res.send('<script>alert("잘못된 그룹코드입니다."); history.back();</script>');
         }
     };
 
@@ -55,7 +56,12 @@ const groupService = require("./groupService");
 */
     exports.createLink = async function (req,res){
         let groupId = req.session.groupId;
-        const linkGroupId = "http://34.64.32.180/app/groupjoins/" + groupId;
+        const userId = req.session.userId;
+        //나중에 고치기
+        const linkGroupId = "http://localhost/app/group/groupjoins/" + groupId;
+        if(userId==undefined){
+            res.render('../views/login/login.ejs');
+        }
         res.render('../views/group/groupLink',{data:linkGroupId});
     }
 
@@ -77,13 +83,38 @@ const groupService = require("./groupService");
 */
     exports.createProfile = async function (req,res){
         let userId = req.session.userId;
-        userId = req.body.userId;
+        console.log(userId);
         let groupId = req.session.groupId;
-        groupId = req.body.groupid;
         const nickname = req.body.nickname;
         const createProfileResult = await groupService.postProfile(groupId,userId,nickname);
         const groupInfoResult = await groupProvider.getGroupInfo(groupId);
-        if(createProfileResult.isSuccess){
-            res.render('../views/main/mainPage',{data:groupInfoResult});
-        }
+        console.log(createProfileResult);
+        //res.send('<script>alert("가입실패하였습니다."); history.back();</script>');
+        res.render('../views/main/mainPage',{data:groupInfoResult});
     }
+    
+    /*
+    **
+ 
+    API No. 
+    API Name : 그룹 생성 API
+    [POST] /app/group
+    */
+    
+    // [GET] /app/createGroup
+    // 그룹 생성하는 페이지를 보여준다
+    exports.makeGroup = async function (req, res) {
+      res.render("../views/group/createGroup.ejs");
+    }
+    // 생성한 그룹 정보를 db에 저장
+    exports.createGroup = async function (req, res) {
+    
+      const {groupName, groupType, groupImg, membershipFee} = req.body;
+      let userId = req.session.userId;
+    
+      const createGroupResponse = await groupService.createGroup(userId, groupName, groupType, groupImg, membershipFee);
+    
+      res.render("../views/group/groupView.ejs");
+    
+    };
+
